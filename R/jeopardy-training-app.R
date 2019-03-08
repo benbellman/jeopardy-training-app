@@ -55,16 +55,17 @@ ui <- fluidPage(
       # Show a plot of the generated distribution
       mainPanel(
         # first row contains question and answer panels
-        fluidRow(verbatimTextOutput('q_category_amount'),   # REACTIVE
+        fluidRow(h4("Category"),
+                 verbatimTextOutput('q_category_amount'),   # REACTIVE
                  verbatimTextOutput('q_airdate')),  # REACTIVE, paste "Aired: " together in server section
                  
          
         # second row contains clue panel
-        fluidRow(h3("Clue"), 
+        fluidRow(h4("Clue"), 
                  verbatimTextOutput('q_clue')),
         
         # third row contains answer panel
-        fluidRow(h3("Answer"), 
+        fluidRow(h4("Answer"), 
                  conditionalPanel("input.show_answer % 2 == 1", 
                                   verbatimTextOutput('q_answer'))),
 

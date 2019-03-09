@@ -24,9 +24,12 @@ q_data <- import(here::here("data", "jeopardy_questions.csv")) %>%
 round_list <- c("Jeopardy! Round", "Double Jeopardy! Round", "Final Jeopardy! Round")
 topic_list <- c("Any", unique(topic_table$topic))
 
+#0033cc
+
 
 # Define UI 
 ui <- fluidPage(
+   #tags$style(type="text/css", "#value{ height: 200px; font-family: monospace; color: #0033cc}"),
    
    # Application title
    titlePanel("Jeopardy! Training App"),
@@ -56,24 +59,24 @@ ui <- fluidPage(
       mainPanel(
         # first row contains question and answer panels
         fluidRow(h4("Category"),
-                 verbatimTextOutput('q_category_amount'),   # REACTIVE
-                 verbatimTextOutput('q_airdate')),  # REACTIVE, paste "Aired: " together in server section
+                 textOutput('q_category_amount'),   # REACTIVE
+                 textOutput('q_airdate')),  # REACTIVE, paste "Aired: " together in server section
                  
          
         # second row contains clue panel
         fluidRow(h4("Clue"), 
-                 verbatimTextOutput('q_clue')),
+                 textOutput('q_clue')),
         
         # third row contains answer panel
         fluidRow(h4("Answer"), 
                  conditionalPanel("input.show_answer % 2 == 1", 
-                                  verbatimTextOutput('q_answer'))),
+                                  textOutput('q_answer'))),
 
 
         # fourth row contains the button to show answer
         fluidRow(actionButton(inputId = "show_answer",
-                              label = "Show/Hide Answer"))
-        )
+                              label = "Show/Hide Answer")),
+        width = 6)
            
       )
 )
